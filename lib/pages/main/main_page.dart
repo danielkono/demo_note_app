@@ -1,5 +1,6 @@
 import 'package:demo_note_app/generated/l10n.dart';
 import 'package:demo_note_app/pages/main/main_notifier.dart';
+import 'package:demo_note_app/widgets/notes_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -14,12 +15,18 @@ class MainPage extends ConsumerWidget {
       appBar: AppBar(
         title: Text(S.current.app_name),
       ),
+      drawer: RelutionDrawer(),
       body: Center(
           child: ListView.separated(
               itemBuilder: (context, index) {
                 return ListTile(
                   title: Text(state.notes[index].title ?? ""),
                   subtitle: Text(state.notes[index].content ?? "-"),
+                  onLongPress: () {
+                    context
+                        .read(mainProvider.notifier)
+                        .deleteNote(state.notes[index]);
+                  },
                   trailing: IconButton(
                     icon: Icon(state.notes[index].favorite
                         ? Icons.favorite
