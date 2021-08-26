@@ -1,4 +1,5 @@
 import 'package:demo_note_app/generated/l10n.dart';
+import 'package:demo_note_app/pages/main/main_notifier.dart';
 import 'package:demo_note_app/services/notes_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +9,7 @@ class MainPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final notes = watch(notesService).notes;
+    final state = watch(mainProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -18,15 +19,15 @@ class MainPage extends ConsumerWidget {
           child: ListView.separated(
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(notes[index].title ?? ""),
-                  subtitle: Text(notes[index].content ?? "-"),
+                  title: Text(state.notes[index].title ?? ""),
+                  subtitle: Text(state.notes[index].content ?? "-"),
                   onTap: () {
-                    context.read(notesService).deleteNote(notes[index]);
+                    context.read(notesService).deleteNote(state.notes[index]);
                   },
                 );
               },
               separatorBuilder: (context, index) => Divider(),
-              itemCount: notes.length)),
+              itemCount: state.notes.length)),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => _showAddNoteDialog(context),
@@ -80,13 +81,9 @@ class MainPage extends ConsumerWidget {
                       TextButton.icon(
                           onPressed: () {
                             if (contentController.text.isNotEmpty) {
-                              String title = titleController.text;
-                              if (title.isEmpty) {
-                                title = "Note created: ${DateTime.now()}";
-                              }
-                              context
-                                  .read(notesService)
-                                  .addNote(title, contentController.text);
+                              context.read(mainProvider.notifier).createNewNote(
+                                  contentController.text,
+                                  title: titleController.text);
                               Navigator.pop(context);
                             }
                           },

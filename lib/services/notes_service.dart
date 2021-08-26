@@ -20,10 +20,10 @@ class NotesService extends ChangeNotifier {
     });
   }
 
-  Future<void> addNote(String title, String content) async {
+  Future<void> addNote(String title, String content, {bool fav = false}) async {
     _notes.add(NoteModel(
         content: content,
-        favorite: false,
+        favorite: fav,
         lastModified: DateTime.now(),
         title: title));
     await _saveNotesAndNotify();
