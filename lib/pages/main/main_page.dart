@@ -1,6 +1,5 @@
 import 'package:demo_note_app/generated/l10n.dart';
 import 'package:demo_note_app/pages/main/main_notifier.dart';
-import 'package:demo_note_app/services/notes_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -21,9 +20,14 @@ class MainPage extends ConsumerWidget {
                 return ListTile(
                   title: Text(state.notes[index].title ?? ""),
                   subtitle: Text(state.notes[index].content ?? "-"),
-                  onTap: () {
-                    context.read(notesService).deleteNote(state.notes[index]);
-                  },
+                  trailing: IconButton(
+                    icon: Icon(state.notes[index].favorite
+                        ? Icons.favorite
+                        : Icons.favorite_border_outlined),
+                    onPressed: () => context
+                        .read(mainProvider.notifier)
+                        .onFavorite(state.notes[index]),
+                  ),
                 );
               },
               separatorBuilder: (context, index) => Divider(),

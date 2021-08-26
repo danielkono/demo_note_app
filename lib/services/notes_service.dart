@@ -36,6 +36,16 @@ class NotesService extends ChangeNotifier {
     await _saveNotesAndNotify();
   }
 
+  Future<void> updateNote(NoteModel note) async {
+    _notes.firstWhere(
+        (element) => element.lastModified.isAtSameMomentAs(note.lastModified))
+      ..content = note.content
+      ..favorite = note.favorite
+      ..title = note.title
+      ..lastModified = DateTime.now();
+    await _saveNotesAndNotify();
+  }
+
   Future<void> _saveNotesAndNotify() async {
     await hiveService.saveNotes(notes);
     notifyListeners();

@@ -27,19 +27,11 @@ class MainNotifier extends StateNotifier<MainState> {
     //state = MainState(notesService.notes);
   }
 
-  Future<void> addToFavorites(NoteModel note) async {
-    await notesService.deleteNote(note);
-    await notesService.addNote(
-        note.title ?? "Note created: ${DateTime.now()}", note.content ?? "-",
-        fav: true);
-  }
-
-  Future<void> deleteFromFavorites(NoteModel note) async {
-    if (note.favorite) {
-      await notesService.deleteNote(note);
-      await notesService.addNote(
-          note.title ?? "Note created: ${DateTime.now()}", note.content ?? "-",
-          fav: false);
-    }
+  Future<void> onFavorite(NoteModel note) async {
+    await notesService.updateNote(NoteModel(
+        lastModified: note.lastModified,
+        content: note.content,
+        favorite: !note.favorite,
+        title: note.title));
   }
 }
