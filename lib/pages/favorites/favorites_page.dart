@@ -16,13 +16,6 @@ class FavoritesPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.current.favorites_page),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.favorite),
-              onPressed: () {
-                Navigator.pushNamed(context, RouteService.favoritesPage);
-              })
-        ],
       ),
       drawer: RelutionDrawer(),
       body: Center(
