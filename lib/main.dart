@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'generated/l10n.dart';
 
 void main() {
+  // ProviderScope is necassarry for riverpod to manage all dependecie injection
   runApp(ProviderScope(child: MyApp()));
 }
 
@@ -15,6 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Demo Note',
+      // localization stuff
+      // checkout Flutter Intl vscode plugin description
       localizationsDelegates: [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -22,6 +25,8 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
+      //RouteService provides info about existing routes
+      // "/" is Flutters default first page/entry page
       routes: RouteService.routes,
     );
   }

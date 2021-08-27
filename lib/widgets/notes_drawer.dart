@@ -1,3 +1,4 @@
+import 'package:demo_note_app/generated/l10n.dart';
 import 'package:demo_note_app/services/route_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -31,12 +32,12 @@ class RelutionDrawer extends ConsumerWidget {
         ),
         DividerLabel(),
         DrawerNavigationItem(
-          title: "Main",
+          title: S.current.main_page_title,
           icon: Icons.house,
           routeName: RouteService.mainPage,
         ),
         DrawerNavigationItem(
-          title: "Favorites",
+          title: S.current.favorites_page,
           icon: Icons.favorite,
           routeName: RouteService.favoritesPage,
         ),

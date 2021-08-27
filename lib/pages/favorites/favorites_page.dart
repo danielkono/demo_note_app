@@ -11,11 +11,11 @@ class FavoritesPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final state = watch(favoritesNotifier);
+    final state = watch(favoritesProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Favorites"),
+        title: Text(S.current.favorites_page),
         actions: [
           IconButton(
               icon: Icon(Icons.favorite),

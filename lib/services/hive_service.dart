@@ -6,11 +6,18 @@ const String _notesKey = "_notesKey";
 
 final hiveService = Provider((ref) => HiveService());
 
+///HiveService represents the persisten storage of data
+///Hive is like a DataBase
+///
+///[HiveService] provide simple function to save or read out notes from storage
+///
 class HiveService {
   bool _hasInit = false;
 
+  /// must be called before accessing the data
   Future<void> initHiveService() async {
     await Hive.initFlutter();
+    // will be auto generated in [NoteModel]
     Hive.registerAdapter(NoteModelAdapter());
     _hasInit = true;
   }

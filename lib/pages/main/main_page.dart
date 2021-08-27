@@ -68,14 +68,15 @@ class MainPage extends ConsumerWidget {
                 children: [
                   TextField(
                     controller: titleController,
-                    decoration: InputDecoration(hintText: "Enter yor title"),
+                    decoration:
+                        InputDecoration(hintText: S.current.enter_title_hint),
                   ),
                   Expanded(
                     child: TextField(
                       maxLines: null,
                       controller: contentController,
                       decoration: InputDecoration(
-                          hintText: "Enter your note",
+                          hintText: S.current.enter_content_hint,
                           border: InputBorder.none),
                     ),
                   ),
@@ -88,7 +89,7 @@ class MainPage extends ConsumerWidget {
                             Navigator.pop(context);
                           },
                           icon: Icon(Icons.cancel),
-                          label: Text("close")),
+                          label: Text(S.current.close)),
                       TextButton.icon(
                           onPressed: () {
                             if (contentController.text.isNotEmpty) {
@@ -99,7 +100,7 @@ class MainPage extends ConsumerWidget {
                             }
                           },
                           icon: Icon(Icons.add),
-                          label: Text("add new note")),
+                          label: Text(S.current.add_new_note)),
                     ],
                   ),
                 ],

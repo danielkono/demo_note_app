@@ -19,8 +19,19 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(time) => "Note created: ${time}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "app_name": MessageLookupByLibrary.simpleMessage("Demo Note")
+        "add_new_note": MessageLookupByLibrary.simpleMessage(" Add new note"),
+        "app_name": MessageLookupByLibrary.simpleMessage("Demo Note"),
+        "close": MessageLookupByLibrary.simpleMessage("close"),
+        "enter_content_hint":
+            MessageLookupByLibrary.simpleMessage("Enter here your content"),
+        "enter_title_hint":
+            MessageLookupByLibrary.simpleMessage("Enter here your title"),
+        "favorites_page": MessageLookupByLibrary.simpleMessage("Favorites"),
+        "main_page_title": MessageLookupByLibrary.simpleMessage("Main Page"),
+        "note_created_at": m0
       };
 }

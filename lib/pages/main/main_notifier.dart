@@ -1,3 +1,4 @@
+import 'package:demo_note_app/generated/l10n.dart';
 import 'package:demo_note_app/models/note_model.dart';
 import 'package:demo_note_app/pages/main/main_state.dart';
 import 'package:demo_note_app/services/notes_service.dart';
@@ -22,7 +23,8 @@ class MainNotifier extends StateNotifier<MainState> {
     if (title != null && title.isNotEmpty) {
       await notesService.addNote(title, content);
     } else {
-      await notesService.addNote("Note created: ${DateTime.now()}", content);
+      await notesService.addNote(
+          S.current.note_created_at(DateTime.now().toString()), content);
     }
     //state = MainState(notesService.notes);
   }

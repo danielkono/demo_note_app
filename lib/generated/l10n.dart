@@ -59,6 +59,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Main Page`
+  String get main_page_title {
+    return Intl.message(
+      'Main Page',
+      name: 'main_page_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Favorites`
+  String get favorites_page {
+    return Intl.message(
+      'Favorites',
+      name: 'favorites_page',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// ` Add new note`
+  String get add_new_note {
+    return Intl.message(
+      ' Add new note',
+      name: 'add_new_note',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `close`
+  String get close {
+    return Intl.message(
+      'close',
+      name: 'close',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter here your title`
+  String get enter_title_hint {
+    return Intl.message(
+      'Enter here your title',
+      name: 'enter_title_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter here your content`
+  String get enter_content_hint {
+    return Intl.message(
+      'Enter here your content',
+      name: 'enter_content_hint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Note created: {time}`
+  String note_created_at(Object time) {
+    return Intl.message(
+      'Note created: $time',
+      name: 'note_created_at',
+      desc: '',
+      args: [time],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

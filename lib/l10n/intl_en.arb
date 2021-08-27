@@ -1,3 +1,10 @@
 {
-    "app_name": "Demo Note"
+    "app_name": "Demo Note",
+    "main_page_title": "Main Page",
+    "favorites_page": "Favorites",
+    "add_new_note": " Add new note",
+    "close": "close",
+    "enter_title_hint": "Enter here your title",
+    "enter_content_hint": "Enter here your content",
+    "note_created_at": "Note created: {time}"
 }

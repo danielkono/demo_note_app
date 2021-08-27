@@ -1,6 +1,6 @@
 import 'package:demo_note_app/models/note_model.dart';
 
-class FavoriteState {
+class FavoritesState {
   final List<NoteModel> notes;
-  FavoriteState(this.notes);
+  FavoritesState(this.notes);
 }
